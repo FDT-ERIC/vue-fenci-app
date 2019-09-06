@@ -76,7 +76,6 @@ export default {
         };
         return false;
       } else if (!/^1[345678]\d{9}$/.test(this.phone)) { // 正则表达式
-        console.log(111);
         this.errors = {
           phone: "请填写正确的手机号码"
         };
