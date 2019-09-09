@@ -28,7 +28,7 @@
 
     <!-- 登录按钮 -->
     <div class="login_btn">
-      <button>登录</button>
+      <button :disabled="isClick" @click="handleLogin">登录</button>
     </div>
 
   </div>
@@ -51,7 +51,36 @@ export default {
     };
   },
 
+  computed: {
+    isClick() {
+      if(!this.phone || !this.verifyCode) return true;
+      else return false;
+    }
+  },
+
   methods: {
+    handleLogin() {
+      // 取消错误提醒
+      this.errors = {};
+      // 发送请求
+      this.$axios.post("/api/posts/sms_back", {
+        phone: this.phone,
+        code: this.verifyCode
+      })
+      .then(res => {
+        // 检验成功，设置登录状态并且跳转到 /
+        localStorage.setItem("sv_login", true);
+        this.$router.push("/");
+      })
+      .catch(err => {
+        // 返回错误信息
+        this.errors= {
+          code: err.response.data.msg
+        };
+      })
+    },
+
+    // 获取验证码
     getVerifyCode() {
       if (this.validatePhone()) {
         // 验证码按钮
@@ -151,6 +180,10 @@ export default {
   font-size: 14px;
   border: none;
   outline: none;
+}
+
+.login_btn button[disabled] {
+  background-color: #8bda81;
 }
 
 .login_btn button[disabled] {

@@ -9,21 +9,42 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'idnex',
-      component: ()=> import("./views/index.vue")
+      // name: 'idnex',
+      component: () => import("./views/index.vue"),
+      children: [
+        {
+          path: '',
+          redirect: '/home' // 重定向回主页
+        },
+        {
+          path: '/home',
+          name: 'home',
+          component: () => import('./views/Home.vue')
+        },
+        {
+          path: '/test',
+          name: 'test',
+          component: () => import('./views/Test.vue')
+        },
+        {
+          path: '/me',
+          name: 'me',
+          component: () => import('./views/Me.vue')
+        }
+      ]
     },
     {
       path: '/login',
       name: 'login',
-      component: ()=> import("./views/Login.vue")
+      component: () => import("./views/Login.vue")
     }
   ]
 })
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
-  // 判断是否存在 ele_login 这是在登录后产生的
-  const isLogin = localStorage.ele_login ? true:false;
+  // 判断是否存在 sv_login 这是在登录后产生的
+  const isLogin = localStorage.sv_login ? true : false;
   if (to.path == '/login') {
     next();
   } else {
