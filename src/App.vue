@@ -10,9 +10,7 @@ export default {
   created() {
     this.getLocation();
   },
-
   methods: {
-    // 获取精准定位（高德地图）
     getLocation() {
       const self = this;
       AMap.plugin("AMap.Geolocation", function() {
@@ -23,25 +21,24 @@ export default {
           timeout: 10000
         });
 
-        geolocation.getCurrentPosition(); // 获取到当前定位
+        geolocation.getCurrentPosition();
         AMap.event.addListener(geolocation, "complete", onComplete);
         AMap.event.addListener(geolocation, "error", onError);
 
         function onComplete(data) {
-          // data是具体的定位信息，精准定位
+          // data是具体的定位信息  精准定位
           // console.log(data);
           self.$store.dispatch("setLocation", data);
           self.$store.dispatch("setAddress", data.formattedAddress);
         }
 
         function onError(data) {
-          // 定位出错，非精准定位
+          // 定位出错    非精准定位
           // console.log(data);
           self.getLngLatLocation();
         }
       });
     },
-
     // 获取经纬度
     getLngLatLocation() {
       const self = this;
@@ -51,15 +48,14 @@ export default {
           if (status === "complete" && result.info === "OK") {
             // 查询成功，result即为当前所在城市信息
             console.log(result);
-            // 逆向地理编码，通过经纬度推算出当前的具体位置
             AMap.plugin("AMap.Geocoder", function() {
               var geocoder = new AMap.Geocoder({
                 // city 指定进行编码查询的城市，支持传入城市名、adcode 和 citycode
                 city: result.adcode
               });
-              // 获取经纬度
-              var lnglat = result.rectangle.split(",")[0].split(",");
-              // 通过经纬度获取地址
+
+              var lnglat = result.rectangle.split(";")[0].split(",");
+
               geocoder.getAddress(lnglat, function(status, data) {
                 if (status === "complete" && data.info === "OK") {
                   // result为对应的地理位置详细信息
@@ -71,6 +67,7 @@ export default {
                     },
                     formattedAddress: data.regeocode.formattedAddress
                   });
+
                   self.$store.dispatch(
                     "setAddress",
                     data.regeocode.formattedAddress
