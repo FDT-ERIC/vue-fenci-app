@@ -33,12 +33,13 @@ export default {
         }
 
         function onError(data) {
-          // 定位出错    非精准定位
+          // 定位出错，通过经纬度进行定位
           // console.log(data);
           self.getLngLatLocation();
         }
       });
     },
+    
     // 获取经纬度
     getLngLatLocation() {
       const self = this;

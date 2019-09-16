@@ -8,7 +8,7 @@
           <i class="fa fa-angle-down"></i>
         </span>
         <i class="fa fa-search"></i>
-        <input type="text" v-model="search_val" placeholder="输入城市名" />
+        <input type="text" v-model="search_val" placeholder="输入具体地址" />
       </div>
       <Location @click="selectAddress" :address="address" />
     </div>
