@@ -15,7 +15,7 @@ export default {
         tabbarData: [
           {title: "首页", icon: "home", path: "/home"},
           {title: "测试", icon: "file-text-o", path: "/test"},
-          {title: "首页", icon: "user", path: "/me"}
+          {title: "我的", icon: "user", path: "/me"}
         ]
       }
     },
