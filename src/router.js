@@ -52,15 +52,15 @@ const router = new Router({
 })
 
 // 路由守卫
-router.beforeEach((to, from, next) => {
-  // 判断是否存在 sv_login 这是在登录后产生的
-  const isLogin = localStorage.sv_login ? true : false;
-  if (to.path == '/login') {
-    next();
-  } else {
-    // 是否在登录状态下
-    isLogin ? next() : next('/login');
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   // 判断是否存在 sv_login 这是在登录后产生的
+//   const isLogin = localStorage.sv_login ? true : false;
+//   if (to.path == '/login') {
+//     next();
+//   } else {
+//     // 是否在登录状态下
+//     isLogin ? next() : next('/login');
+//   }
+// });
 
 export default router;
