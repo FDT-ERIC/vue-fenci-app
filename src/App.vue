@@ -71,7 +71,7 @@ export default {
                     },
                     formattedAddress: data.regeocode.formattedAddress
                   });
-                  self.$$store.dispatch(
+                  self.$store.dispatch(
                     "setAddress",
                     data.regeocode.formattedAddress
                   );
