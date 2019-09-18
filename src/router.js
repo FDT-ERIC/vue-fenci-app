@@ -6,6 +6,7 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: "active",
   routes: [
     {
       path: '/',
@@ -47,6 +48,23 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: () => import("./views/Login.vue")
+    },
+    {
+      path: '/fenci',
+      name: 'fenci',
+      component: () => import("./views/fenci/Fenci.vue"),
+      children: [
+        {
+          path: '/fenci/show',
+          name: 'show',
+          component: () => import("./views/fenci/subItems/Show.vue")
+        },
+        {
+          path: '/fenci/help',
+          name: 'help',
+          component: () => import("./views/fenci/subItems/Help.vue")
+        },
+      ]
     }
   ]
 })
