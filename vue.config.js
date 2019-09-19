@@ -16,11 +16,11 @@ module.exports = {
           }
         },
         '/base': {
-          target: 'http://106.75.137.205:8081/ai/api/base',
+          target: 'http://106.75.137.205:8081',
           // ws: true,
           changOrigin: true, // 跨域
           pathRewrite: {
-            '^/base': ''
+            '^/base': '/api'
           }
         }
       },

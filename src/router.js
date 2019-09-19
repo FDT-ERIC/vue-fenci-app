@@ -10,62 +10,105 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      redirect: '/app',
       // name: 'idnex',
       component: () => import("./views/index.vue"),
       children: [
         {
           path: '',
-          redirect: '/home' // 重定向回主页
+          redirect: '/app/home' // 重定向回主页
         },
         {
-          path: '/home',
+          path: '/app/home',
           name: 'home',
           component: () => import('./views/Home.vue')
         },
         {
-          path: '/test',
+          path: '/app/test',
           name: 'test',
           component: () => import('./views/Test.vue')
         },
         {
-          path: '/me',
+          path: '/app/me',
           name: 'me',
           component: () => import('./views/Me.vue')
         },
         {
-          path: '/address',
+          path: '/app/address',
           name: 'address',
           component: () => import('./views/Address.vue')
         },
         {
-          path: '/city',
+          path: '/app/city',
           name: 'city',
           component: () => import('./views/City.vue')
         }
       ]
     },
+
+    // 登录
     {
-      path: '/login',
+      path: '/app/login',
       name: 'login',
       component: () => import("./views/Login.vue")
     },
+
+    // 分词
     {
-      path: '/fenci',
+      path: '/app/fenci',
       name: 'fenci',
       component: () => import("./views/fenci/Fenci.vue"),
       children: [
         {
-          path: '/fenci/show',
+          path: '/app/fenci/show',
           name: 'show',
           component: () => import("./views/fenci/subItems/Show.vue")
         },
         {
-          path: '/fenci/help',
+          path: '/app/fenci/help',
           name: 'help',
           component: () => import("./views/fenci/subItems/Help.vue")
         },
       ]
-    }
+    },
+
+    // 情感分析
+    {
+      path: '/app/sentiAna',
+      name: 'fenci',
+      component: () => import("./views/sentiAna/SentiAna.vue"),
+      children: [
+        {
+          path: '/app/sentiAna/show',
+          name: 'show',
+          component: () => import("./views/sentiAna/subItems/Show.vue")
+        },
+        {
+          path: '/app/sentiAna/help',
+          name: 'help',
+          component: () => import("./views/sentiAna/subItems/Help.vue")
+        },
+      ]
+    },
+
+    // 文本分类
+    {
+      path: '/app/txtCla',
+      name: 'fenci',
+      component: () => import("./views/txtCla/TxtCla.vue"),
+      children: [
+        {
+          path: '/app/txtCla/show',
+          name: 'show',
+          component: () => import("./views/txtCla/subItems/Show.vue")
+        },
+        {
+          path: '/app/txtCla/help',
+          name: 'help',
+          component: () => import("./views/txtCla/subItems/Help.vue")
+        },
+      ]
+    },
   ]
 })
 

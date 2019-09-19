@@ -82,12 +82,15 @@ export default {
       this.entries = [
         [
           { name: "分词", image: require("../assets/nlp_fenci.png") },
-          { name: "词性", image: require("../assets/nlp_fenci.png") }
+          { name: "POS", image: require("../assets/nlp_fenci.png") },
+          { name: "NER", image: require("../assets/nlp_fenci.png") },
+          { name: "情感分析", image: require("../assets/nlp_fenci.png") },
+          { name: "文本分类", image: require("../assets/nlp_fenci.png") }
         ],
         [
           { name: "分词", image: require("../assets/nlp_fenci.png") },
           { name: "词性", image: require("../assets/nlp_fenci.png") }
-        ]
+        ],
       ];
 
       // 获取分类
@@ -110,9 +113,12 @@ export default {
       console.log(condition)
     },
     selectSubItem(item) {
-      // console.log(item.name)
       if (item.name == "分词") {
-        this.$router.push("/fenci");
+        this.$router.push("/app/fenci");
+      } else if(item.name == "情感分析") {
+        this.$router.push("/app/sentiAna")
+      } else if(item.name="文本分类") {
+        this.$router.push("/app/txtCla")
       }
     }
   },

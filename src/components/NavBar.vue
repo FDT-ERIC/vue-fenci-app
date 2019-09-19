@@ -1,10 +1,10 @@
 <template>
   <div class="nav">
-    <router-link to="/fenci/show" class="nav-item">
+    <router-link :to="'/app/' + data + '/show'" class="nav-item">
       展示
       <i class="line"></i>
     </router-link>
-    <router-link to="/fenci/help" class="nav-item">
+    <router-link :to="'/app/' + data + '/help'" class="nav-item">
       帮助文档
       <i class="line"></i>
     </router-link>
@@ -13,7 +13,10 @@
 
 <script>
 export default {
-  name: "NavBar"
+  name: "NavBar",
+  props: {
+    data: String
+  }
 };
 </script>
 

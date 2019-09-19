@@ -1,8 +1,8 @@
 <template>
-  <div class="fenci">
+  <div class="txtCla">
     <Algorithm :data="allData"/>
     <!-- 导航 -->
-    <NavBar :data="'fenci'"/>
+    <NavBar :data="'txtCla'"/>
     <router-view></router-view>
   </div>
 </template>
@@ -11,13 +11,13 @@
 import Algorithm from "../../components/Algorithm";
 import NavBar from "../../components/NavBar";
 export default {
-  name: "fenci",
+  name: "txtCla",
   data() {
     return {
       allData: {
         title:
-          "分词（该服务能够识别出文本串中的基本词汇（分词），对这些词汇进行重组）",
-        desc: "分词，很牛",
+          "文本分类（该服务能够识别出文本串中的基本词汇（分词），对这些词汇进行重组）",
+        desc: "文本分类，很牛",
         model: "BERT",
         params: "1.6 M",
         performance: ">SOTA",
