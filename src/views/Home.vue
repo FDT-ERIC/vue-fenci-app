@@ -1,10 +1,13 @@
 <template>
   <div class="home">
     <div class="header">
-      <div class="address_map" @click="$router.push({name: 'address', params: {city: city}})">
+      <!-- <div class="address_map" @click="$router.push({name: 'address', params: {city: city}})">
         <i class="fa fa-map-marker"></i>
         <span>{{address}}</span>
         <i class="fa fa-sort-desc"></i>
+      </div> -->
+      <div class="address_map">
+        <span>创新工场大湾区人工智能研究院</span>
       </div>
     </div>
     <div class="search_wrap" :class="{'fixedview':showFilter}">
@@ -87,10 +90,6 @@ export default {
           { name: "情感分析", image: require("../assets/nlp_fenci.png") },
           { name: "文本分类", image: require("../assets/nlp_fenci.png") }
         ],
-        [
-          { name: "分词", image: require("../assets/nlp_fenci.png") },
-          { name: "词性", image: require("../assets/nlp_fenci.png") }
-        ],
       ];
 
       // 获取分类
@@ -101,10 +100,10 @@ export default {
       // });
 
       // 获取功能说明下的内容
-      this.$axios("/api/profile/filter").then(res => {
-        // console.log(res.data);
-        this.filterData = res.data;
-      });
+      // this.$axios("/api/profile/filter").then(res => {
+      //   // console.log(res.data);
+      //   this.filterData = res.data;
+      // });
     },
     showFilterView(isShow) {
       this.showFilter = isShow;
@@ -117,8 +116,12 @@ export default {
         this.$router.push("/app/fenci");
       } else if(item.name == "情感分析") {
         this.$router.push("/app/sentiAna")
-      } else if(item.name="文本分类") {
+      } else if(item.name == "文本分类") {
         this.$router.push("/app/txtCla")
+      } else if(item.name == "POS") {
+        this.$router.push("/app/pos")
+      } else if(item.name == "NER") {
+        this.$router.push("/app/ner")
       }
     }
   },

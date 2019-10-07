@@ -8,7 +8,7 @@
 export default {
   name: "app",
   created() {
-    this.getLocation();
+    // this.getLocation();
   },
   methods: {
     getLocation() {

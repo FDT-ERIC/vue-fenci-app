@@ -72,6 +72,44 @@ const router = new Router({
       ]
     },
 
+    // POS词性
+    {
+      path: '/app/pos',
+      name: 'fenci',
+      component: () => import("./views/pos/POS.vue"),
+      children: [
+        {
+          path: '/app/pos/show',
+          name: 'show',
+          component: () => import("./views/pos/subItems/Show.vue")
+        },
+        {
+          path: '/app/pos/help',
+          name: 'help',
+          component: () => import("./views/pos/subItems/Help.vue")
+        },
+      ]
+    },
+
+    // NER 
+    {
+      path: '/app/ner',
+      name: 'fenci',
+      component: () => import("./views/ner/NER.vue"),
+      children: [
+        {
+          path: '/app/ner/show',
+          name: 'show',
+          component: () => import("./views/ner/subItems/Show.vue")
+        },
+        {
+          path: '/app/ner/help',
+          name: 'help',
+          component: () => import("./views/ner/subItems/Help.vue")
+        },
+      ]
+    },
+
     // 情感分析
     {
       path: '/app/sentiAna',
